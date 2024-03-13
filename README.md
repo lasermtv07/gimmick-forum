@@ -1,2 +1,2 @@
-# piet-forums
-A web forum for Piet programmers; school project
+# design hell forum
+A web forum about og design; school project
