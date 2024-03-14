@@ -15,30 +15,8 @@
         <b>Password again: </b><input type="password" name="phe" /><br>
         <input type="submit" name="s" />
     </form>
-    <?php
-    function encodeName($s){
-        $a=mb_str_split(mb_strtolower($s));
-        foreach($a as $k=>$i){
-                if($i==='á') $a[$k]="a";
-                if($i==="č") $a[$k]="c";
-                if($i==="ď") $a[$k]="d";
-                if($i==="é") $a[$k]="e";
-								if($i==="ě") $a[$k]="e";
-								if($i==="í") $a[$k]="i";
-								if($i==="ň") $a[$k]="n";
-								if($i==="ó") $a[$k]="o";
-								if($i==="ř") $a[$k]="r";
-								if($i==="š") $a[$k]="s";
-								if($i==="ť") $a[$k]="t";
-								if($i==="ú") $a[$k]="u";
-								if($i==="ů") $a[$k]="u";
-								if($i==="ý") $a[$k]="y";
-								if($i==="ž") $a[$k]="z";
-								if($i===" ") $a[$k]="-";
-				}
-		$a=implode("",$a);
-		return $a;
-    }
+<?php
+include "com.php";
         if(isset($_POST["s"])){
             $jm=(isset($_POST["jm"])) ? htmlspecialchars(trim($_POST["jm"])) : "";
             $em=(isset($_POST["em"])) ? $_POST["em"] : "";
@@ -46,7 +24,7 @@
             $phe=(isset($_POST["phe"])) ? $_POST["phe"] : "";
 
             if($jm==="" || !preg_match("/^[A-Za-z0-9ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽáčďéěíňóřšťúůýž ]+$/",$jm) || mb_strlen($jm)<3) {
-                echo "<b>The name can only contain lowercase and uppercase letters and numbers</b>";
+                echo "<b>The name can only contain lowercase and uppercase letters and numbers and must be atleast 3 letters long!</b>";
                 die();
 						}
 						if($em==="" || !preg_match("/^.+@.+\..+$/",$em)/* || preg_match("/:/",$em)*/) {
@@ -61,8 +39,16 @@
 							echo "<b>Passwords do not match!</b>";
 							die();
 						}
+						if(!isUnique(queryLs("acc.txt"),$jm)){
+							echo "<b>Account with such name already exists!</b>";
+							die();
+						}
 						echo "<h1>success</h1>";
-        }
+						$he=base64_encode($he);
+						file_put_contents("acc.txt","$jm;$em;$he;no;no\n",FILE_APPEND);
+						var_dump(queryLs("acc.txt"));
+				}
+
     ?>
 </body>
 </html>
