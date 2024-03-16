@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>design hell login</title>
+	<title>gimmick forum login</title>
 </head>
 <body>
 <?php
 include 'com.php';
 menu();
 ?>
-	<h1>design hell login</h1>
+	<h1>gimmick forum login</h1>
 	<form method=POST>
 		<b>Name: <input type=text name=jm /> <br>
 		<b>Password</b>: <input type=password name=he /> <br>

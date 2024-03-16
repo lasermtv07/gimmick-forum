@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>design hell</title>
+    <title>gimmick forum register</title>
 </head>
 <body>
 <?php
 include "com.php";
 menu();
 ?>
-    <h1>design hell forum registration</h1>
+    <h1>gimmick forum registration</h1>
     <form method=POST>
         <b>Name: </b><input type="text" name="jm" /><br>
         <b>E-mail: </b><input type="text" name="em" value="@" /><br>
