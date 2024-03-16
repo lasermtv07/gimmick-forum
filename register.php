@@ -7,6 +7,10 @@
     <title>design hell</title>
 </head>
 <body>
+<?php
+include "com.php";
+menu();
+?>
     <h1>design hell forum registration</h1>
     <form method=POST>
         <b>Name: </b><input type="text" name="jm" /><br>
@@ -16,7 +20,6 @@
         <input type="submit" name="s" />
     </form>
 <?php
-include "com.php";
         if(isset($_POST["s"])){
             $jm=(isset($_POST["jm"])) ? htmlspecialchars(trim($_POST["jm"])) : "";
             $em=(isset($_POST["em"])) ? $_POST["em"] : "";

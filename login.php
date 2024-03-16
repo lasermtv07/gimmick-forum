@@ -4,6 +4,10 @@
 	<title>design hell login</title>
 </head>
 <body>
+<?php
+include 'com.php';
+menu();
+?>
 	<h1>design hell login</h1>
 	<form method=POST>
 		<b>Name: <input type=text name=jm /> <br>
@@ -11,7 +15,6 @@
 		<input type=submit name=s /> <br>
 	</form>
 <?php
-include 'com.php';
 if(isset($_POST["s"])){
 	$jm=(isset($_POST["jm"])) ? trim($_POST["jm"]) : "";
 	$he=(isset($_POST["he"])) ? trim($_POST["he"]) : "";
