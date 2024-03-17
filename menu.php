@@ -8,5 +8,8 @@ function menu(){
 	if(isset($_SESSION["jm"])) echo $_SESSION["jm"];
 	else echo "anon";
 	echo "</span>\n<hr />";
+	foreach(scandir(__DIR__) as $i){
+		if(explode("-",$i)[0]==="bo") echo "<a href=board.php?f=$i>$i</a> ";
+		}
 }
 ?>
