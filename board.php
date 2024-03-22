@@ -40,18 +40,33 @@ array_shift($fo);
 <textarea name=po rows=5 cols=50></textarea>
 <br /><input type="submit" name="s"/>
 <?php
+function writeOut($fo){
+	foreach($fo as $i){
+		if($i!==""){
+			echo "<hr />";
+			$t=explode("~",$i);
+			$tj=explode("|",base64_decode($t[0]));
+			echo "<b>".$tj[0]."</b> - <i>".$tj[1]."</i><br />";
+			echo $t[1];
+		}
+
+}
+}
 if(isset($_POST["s"])){
 	session_start();
 	if(!isset($_SESSION["jm"])){
 		echo "<b>Must be logged in to post!</b>";
+		writeOut($fo);
 		die();
 	}
 	if($_POST["po"]===""){
 		echo "<b>Dont post empty posts</b>";
+		writeOut($fo);
 		die();
 	}
 	if(preg_match("/~/",$_POST["po"])){
 		echo "<b>Dont use that character</b>";
+		writeOut($fo);
 		die();
 	}
 	$h=base64_encode($_SESSION["jm"]."|".((string) time()));
@@ -60,17 +75,7 @@ if(isset($_POST["s"])){
 	file_put_contents($_GET["f"],"$h~$z\n",FILE_APPEND);
 	header("location: ".(empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 }
-//TODO: vypise i kdyz se zada sptanej vstup do thovo nesmyslu
-foreach($fo as $i){
-	if($i!==""){
-		echo "<hr />";
-		$t=explode("~",$i);
-		$tj=explode("|",base64_decode($t[0]));
-		echo "<b>".$tj[0]."</b> - <i>".$tj[1]."</i><br />";
-		echo $t[1];
-	}
-
-}
+writeOut($fo);
 ?>
 </body>
 </html>
