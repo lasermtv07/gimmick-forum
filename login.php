@@ -24,6 +24,7 @@ if(isset($_POST["s"])){
 	}
 	session_start();
 	$_SESSION["jm"]=$jm;
+	if(queryLs("acc.txt")[$jm]["ad"]==="yes") $_SESSION["ad"]=true;
 	header("location:.");
 }
 
