@@ -46,10 +46,8 @@ menu();
 							echo "<b>Account with such name already exists!</b>";
 							die();
 						}
-						echo "<h1>success</h1>";
 						$he=base64_encode($he);
 						file_put_contents("acc.txt","$jm;$em;$he;no;no\n",FILE_APPEND);
-						var_dump(queryLs("acc.txt"));
 				}
 
     ?>

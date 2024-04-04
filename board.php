@@ -40,20 +40,26 @@ array_shift($fo);
 <textarea name=po rows=5 cols=50></textarea>
 <br /><input type="submit" name="s"/>
 <?php
+session_start();
 function writeOut($fo){
 	foreach($fo as $i){
 		if($i!==""){
 			echo "<hr />";
 			$t=explode("~",$i);
 			$tj=explode("|",base64_decode($t[0]));
-			echo "<b>".$tj[0]."</b> - <i>".$tj[1]."</i><br />";
+			echo "<b>".$tj[0]."</b> - <i>".$tj[1]."</i>";
+			if($_SESSION["ad"]){
+				echo  "<a href=delete.php?r=".$t[0]."&o=".$_GET["f"].">";
+				echo "<span style=\"color:red; float:right\">[DELETE]</span>";
+				echo "</a>";
+			}
+			echo "<br>";
 			echo $t[1];
 		}
 
 }
 }
 if(isset($_POST["s"])){
-	session_start();
 	if(!isset($_SESSION["jm"])){
 		echo "<b>Must be logged in to post!</b>";
 		writeOut($fo);
