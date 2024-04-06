@@ -31,7 +31,8 @@ array_shift($fo);
 ?>
 <h3>Bans</h3>
 <?php
-echo $fo[0];
+$bl=explode("~",$fo[0]);
+var_dump($bl);
 array_shift($fo);
 ?>
 <h3>Posts</h3>
@@ -51,6 +52,9 @@ function writeOut($fo){
 			if($_SESSION["ad"]){
 				echo  "<a href=delete.php?r=".$t[0]."&o=".$_GET["f"].">";
 				echo "<span style=\"color:red; float:right\">[DELETE]</span>";
+				echo "</a>";
+				echo "<a href=ban.php?j=".$tj[0]."&b=".$_GET["f"].">";
+				echo "<span style=color:red;float:right;padding-right:5px; >[BAN]</span>";
 				echo "</a>";
 			}
 			echo "<br>";
@@ -72,6 +76,11 @@ if(isset($_POST["s"])){
 	}
 	if(preg_match("/~/",$_POST["po"])){
 		echo "<b>Dont use that character</b>";
+		writeOut($fo);
+		die();
+	}
+	if(in_array($_SESSION["jm"],$bl)){
+		echo "<b>You are banned!</b>";
 		writeOut($fo);
 		die();
 	}
