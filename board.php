@@ -2,11 +2,20 @@
 <html>
 <head>
 	<title>a test board</title>
+<style>
+	table td {
+		border: 1px solid black;
+	}
+	table {
+		border-collapse: collapse;
+	}
+</style>
 </head>
 <body>
 <?php
 include 'com.php';
 menu();
+session_start();
 ?>
 	<h1>Hello</h1>
 <?php
@@ -32,7 +41,19 @@ array_shift($fo);
 <h3>Bans</h3>
 <?php
 $bl=explode("~",$fo[0]);
-var_dump($bl);
+echo "<table>\n";
+foreach($bl as $i){
+	if($i!=""){
+		echo "<tr><td>$i</td>";
+		if(isset($_SESSION["ad"])){
+			echo "<td><a href=\"unban.php?j=$i&b=".$_GET["f"]."\" style=\"color:red\">[UNBAN]</a></td></tr>";
+		}
+		else {
+			echo "<td>[BANNED]</td></tr>";
+		}
+	}
+}
+echo "</table>";
 array_shift($fo);
 ?>
 <h3>Posts</h3>
@@ -41,7 +62,6 @@ array_shift($fo);
 <textarea name=po rows=5 cols=50></textarea>
 <br /><input type="submit" name="s"/>
 <?php
-session_start();
 function writeOut($fo){
 	foreach($fo as $i){
 		if($i!==""){
