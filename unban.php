@@ -16,7 +16,7 @@ if($_SESSION["ad"]){
 		$f=implode("\n",$f);
 		echo $f;
 		file_put_contents($b,$f);
-		header("location: ./board.php?f=$b");
 	}
 }
+header("location: ./board.php?f=$b");
 ?>

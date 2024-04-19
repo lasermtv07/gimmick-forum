@@ -35,7 +35,16 @@ $fo=explode("\n",$f);
 ?>
 <h3>Gimmick</h3>
 <?php
+if($_SESSION["ad"]){
+	echo "<form method=\"post\" action=\"update-gimmick.php\">";
+	echo "<input type=\"hidden\" name=\"b\" value=\"".$_GET["f"]."\" />";
+	echo '<textarea name="g">';
+}
 echo $fo[0];
+if($_SESSION["ad"]){
+	echo "</textarea><br />";
+	echo '<input type="submit" value="update" />';
+}
 array_shift($fo);
 ?>
 <h3>Bans</h3>

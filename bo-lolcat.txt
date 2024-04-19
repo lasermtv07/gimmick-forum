@@ -1,5 +1,5 @@
-a page where everyone types in the LOLCAT language
-eee~
+lolcat
+
 ZWVlfDE3MTI0MzA3OTk=~hello world
 ZWVlfDE3MTI0MzA4NjA=~asdasd
 YWFhfDE3MTI0MzI1MDI=~asadasd
@@ -12,3 +12,4 @@ ZWVlfDE3MTM1NDc5MDE=~asdsad
 YmVifDE3MTM1NDc5NzM=~neco velmi nepekneho
 YWFhfDE3MTM1NDgwMjM=~jak si mohl beb?
 ZWVlfDE3MTM1NDg0NDA=~test
+YWFhfDE3MTM1NTE2ODc=~asddasdas
