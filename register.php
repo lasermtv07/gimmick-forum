@@ -49,7 +49,7 @@ menu();
 						$he=base64_encode($he);
 						file_put_contents("acc.txt","$jm;$em;$he;no;no\n",FILE_APPEND);
 				}
-
+footer();
     ?>
 </body>
 </html>

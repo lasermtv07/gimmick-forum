@@ -1,5 +1,6 @@
 <?php
 include 'menu.php';
+include 'footer.php';
 //E:PHP file for functions common or expected-to-be-common across multiple files
 //C:PHP soubor pro funkce ktere planuju pouzivat ve vice souborech
 function queryLs($l){

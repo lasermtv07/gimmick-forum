@@ -29,7 +29,7 @@ if(isset($_POST["s"])){
 }
 
 
-
+footer();
 ?>
 </body>
 </html>

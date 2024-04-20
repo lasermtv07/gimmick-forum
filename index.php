@@ -13,5 +13,6 @@ if(isset($_SESSION["jm"])){
 else {
 	echo "<h1>hello, anon</h1>";
 }
+footer();
 ?>
 </body>
