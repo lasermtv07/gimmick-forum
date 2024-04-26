@@ -1,6 +1,7 @@
 <?php
 include "com.php";
 session_start();
+//TODO: check password
 if(isset($_SESSION["jm"])){
     $f=file_get_contents("acc.txt");
     $f=explode("\n",$f);
