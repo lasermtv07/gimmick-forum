@@ -1,0 +1,60 @@
+* {
+	--menu-bg: rgb(70,130,180);
+}
+body {
+	margin: 0;
+}
+.menu {
+	padding-left: 10px;
+	background-color: var(--menu-bg);
+	position: sticky;
+	top: 0px;
+}
+.menu h1 {
+	display:inline;
+
+}
+.menu h1 a {
+	color: white !important;
+	text-decoration: none;
+}
+.menu h1 a:hover {
+	color: red !important;
+}
+.menu .links {
+	padding: 25px;
+	position: relative;
+	top: -5px;
+	color: white !important;
+}
+.menu .links a {
+	padding-left: 5px;
+	padding-right: 5px;
+	color: white !important;
+	text-decoration: none;
+}
+.menu .links a:hover {
+	background-color: rgb(56,103,143) !important;
+	padding-top: 12px;
+	padding-bottom: 10px;
+}
+/*delano aby se neaplikovalo predchozi pravidlo*/
+.menu .links .frame-link a:hover {
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color:white !important;
+	color: var(--menu-bg) !important;
+}
+.menu .links .frame-link:hover {
+	background-color:white !important;
+}
+.menu .right {
+	float: right;
+	padding-top: 11px;
+	padding-right: 10px;
+}
+.frame,.frame-link {
+	border: 2px solid white;
+	border-radius: 10px;
+	padding: 2px 4px;
+}

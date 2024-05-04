@@ -1,0 +1,36 @@
+body {
+	margin: 0;
+}
+.menu {
+	padding-left: 10px;
+	background-color: rgb(70, 130, 180);
+	position: sticky;
+	top: 0px;
+}
+.menu h1 {
+	display:inline;
+}
+.menu .links {
+	padding: 25px;
+	position: relative;
+	top: -5px;
+	color: white !important;
+}
+.menu .links a {
+	padding-left: 10px;
+	color: white !important;
+	text-decoration: none;
+}
+.menu .links a::hover() {
+	background-color: grey;
+}
+.menu .right {
+	float: right;
+	padding-top: 11px;
+	padding-right: 10px;
+}
+.frame {
+	border: 2px solid white;
+	border-radius: 10px;
+	padding: 2px 4px;
+}
