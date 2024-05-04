@@ -24,8 +24,7 @@ if(!file_exists($f)){
 	echo "<b>File doesnt exist!</b>";
 	die();
 }
-//E:there was a space for a mistake of huge magnitude
-//C:tohle zapomenou by byla VELKA CHYBA!
+//tohle zapomenou by byla VELKA CHYBA!
 if(explode("-",$f)[0]!=="bo"){
 	echo "<b>Dont</b>";
 	die();
@@ -34,21 +33,24 @@ $f=file_get_contents($f);
 $fo=explode("\n",$f);
 ?>
 <h3>Gimmick</h3>
+//TODO: make changing gimmick work
 <?php
-if($_SESSION["ad"]){
-	echo "<form method=\"post\" action=\"update-gimmick.php\">";
-	echo "<input type=\"hidden\" name=\"b\" value=\"".$_GET["f"]."\" />";
-	echo '<textarea name="g">';
-}
+//if(isset($_SESSION["ad"]) && $_SESSION["ad"]) echo "<form method=POST>\n<textarea name=gUpdate>";
 echo $fo[0];
-if($_SESSION["ad"]){
-	echo "</textarea><br />";
-	echo '<input type="submit" value="update" />';
+/*if(isset($_SESSION["ad"]) && $_SESSION["ad"]){
+	echo "\n</textarea><br />";
+	echo '<input type=submit value="Update" />';
 }
-array_shift($fo);
+if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
+	$temp=$fo;
+	$temp[0]=nl2br($_POST["gUpdate"]);
+	$temp=implode("\n",$temp);
+	file_put_contents($_GET["f"],$temp);
+}*/
 ?>
 <h3>Bans</h3>
 <?php
+var_dump($fo);
 $bl=explode("~",$fo[0]);
 echo "<table>\n";
 foreach($bl as $i){
@@ -65,13 +67,16 @@ foreach($bl as $i){
 echo "</table>";
 array_shift($fo);
 ?>
+
 <h3>Posts</h3>
 <form method=POST>
 <b>Write your post:</b><br />
 <textarea name=po rows=5 cols=50></textarea>
 <br /><input type="submit" name="s"/>
 <?php
+
 function writeOut($fo){
+	$fo=array_reverse($fo);
 	foreach($fo as $i){
 		if($i!==""){
 			echo "<hr />";
@@ -93,6 +98,8 @@ function writeOut($fo){
 }
 }
 if(isset($_POST["s"])){
+
+echo "catch";
 	if(!isset($_SESSION["jm"])){
 		echo "<b>Must be logged in to post!</b>";
 		writeOut($fo);
