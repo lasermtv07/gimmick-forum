@@ -33,25 +33,33 @@ $f=file_get_contents($f);
 $fo=explode("\n",$f);
 ?>
 <h3>Gimmick</h3>
-//TODO: make changing gimmick work
 <?php
-//if(isset($_SESSION["ad"]) && $_SESSION["ad"]) echo "<form method=POST>\n<textarea name=gUpdate>";
+if(isset($_SESSION["ad"]) && $_SESSION["ad"]) echo "<form method=POST>\n<textarea name=gUpdate>";
 echo $fo[0];
-/*if(isset($_SESSION["ad"]) && $_SESSION["ad"]){
+if(isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	echo "\n</textarea><br />";
 	echo '<input type=submit value="Update" />';
 }
 if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	$temp=$fo;
-	$temp[0]=nl2br($_POST["gUpdate"]);
+	$temp[0]=$_POST["gUpdate"];
+	$t2="";
+	//tady jsem eml problemy s kodovanim newlinu a nl2br je neopravilo,
+	//tak jsem newliny a carriage return smazal rucne
+	foreach(mb_str_split($temp[0]) as $i){
+		if($i!=="\n" && $i!=="\r"){
+			$t2.=$i;
+		}
+	}
+	$temp[0]=$t2;
 	$temp=implode("\n",$temp);
 	file_put_contents($_GET["f"],$temp);
-}*/
+	header("location: board.php?f=".$_GET["f"]);
+}
 ?>
 <h3>Bans</h3>
 <?php
-var_dump($fo);
-$bl=explode("~",$fo[0]);
+$bl=explode("~",$fo[1]);
 echo "<table>\n";
 foreach($bl as $i){
 	if($i!=""){
