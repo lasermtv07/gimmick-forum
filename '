@@ -60,28 +60,7 @@ body {
 }
 
 @media screen and (max-width:780px) {
-	.menu {
-		height: 8rem;
-	}
 	.menu h1 {
 		display:block;
-		margin: 0 auto;
-		width: 75%;
-		text-align: center;
-	}
-	.menu .links {
-		display: block;
-		width: 90%;
-		margin: 0 auto;
-		text-align: center;
-		padding: 5px 0;
-	}
-	.menu .links a:hover {
-		padding-top:5px !important;
-		padding-bottom:5px !important;
-	}
-	.menu .links .right {
-		float: none;
-		display: block;
 	}
 }
