@@ -1,0 +1,18 @@
+main {
+	width: 85%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,0);
+	background-color: #F2F2F2;
+	padding: 0 10px;
+	min-height: 100%;
+}
+body {
+	background-color: #E8E8E8;
+}
+@media screen and (max-width: 780px) {
+	main {
+		width: 100%;
+		margin: 0 10px !important;
+	}
+}

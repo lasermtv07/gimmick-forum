@@ -1,0 +1,48 @@
+td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 0 10px;
+}
+table {
+	border-collapse: collapse;
+	border-style: hidden;
+}
+table.layout1 {
+	border: none !important;
+}
+.split {
+	display: flex;
+}
+.gimmick {
+	height: 150px;
+	width: 50%;
+}
+.bans {
+	width: 50%;
+	padding: 0 10px;
+	border-left: 2px solid grey;
+}
+.bans .scroll {
+	overflow-y: scroll;
+	height: 150px;
+}
+.bans .scroll tr,td {
+	width: 80%;
+	margin: 0 10px;
+}
+@media screen and (max-width: 780px){
+	.split {
+		display:block;
+	}
+	.gimmick {
+		height: auto;
+	}
+	.bans {
+		border: none;
+		padding: 0;
+		width: 95%;
+	}
+	.bans .scroll td {
+		width: 100%;
+	}
+}

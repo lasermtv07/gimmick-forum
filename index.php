@@ -2,9 +2,12 @@
 <html>
 <head>
 	<title>hello</title>
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 <?php include 'com.php'; menu(); ?>
+
+<main>
 <?php
 session_start();
 if(isset($_SESSION["jm"])){
@@ -15,4 +18,5 @@ else {
 }
 footer();
 ?>
+</main>
 </body>

@@ -2,14 +2,8 @@
 <html>
 <head>
 	<title>a test board</title>
-<style>
-	table td {
-		border: 1px solid black;
-	}
-	table {
-		border-collapse: collapse;
-	}
-</style>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/board.css" />
 </head>
 <body>
 <?php
@@ -17,6 +11,7 @@ include 'com.php';
 menu();
 session_start();
 ?>
+<main>
 	<h1>Hello</h1>
 <?php
 $f=isset($_GET["f"]) ? $_GET["f"] : "";
@@ -32,7 +27,9 @@ if(explode("-",$f)[0]!=="bo"){
 $f=file_get_contents($f);
 $fo=explode("\n",$f);
 ?>
-<h3>Gimmick</h3>
+<div class=split>
+<div class=gimmick >
+		<h3>Gimmick</h3>
 <?php
 if(isset($_SESSION["ad"]) && $_SESSION["ad"]) echo "<form method=POST>\n<textarea name=gUpdate>";
 echo $fo[0];
@@ -57,7 +54,11 @@ if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	header("location: board.php?f=".$_GET["f"]);
 }
 ?>
-<h3>Bans</h3>
+</div>
+
+<div class=bans >
+		<h3>Bans</h3>
+<div class=scroll >
 <?php
 $bl=explode("~",$fo[1]);
 echo "<table>\n";
@@ -75,7 +76,9 @@ foreach($bl as $i){
 echo "</table>";
 array_shift($fo);
 ?>
-
+</div>
+</div>
+</div>
 <h3>Posts</h3>
 <form method=POST>
 <b>Write your post:</b><br />
@@ -137,6 +140,7 @@ echo "catch";
 writeOut($fo);
 footer();
 ?>
+</main>
 </body>
 </html>
 
