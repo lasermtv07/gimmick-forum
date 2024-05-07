@@ -16,3 +16,7 @@ body {
 		margin: 0 10px !important;
 	}
 }
+li {
+	list-style: "> ";
+	margin-left: 5px;
+}

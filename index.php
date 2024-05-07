@@ -10,6 +10,12 @@
 <main>
 <?php
 session_start();
+
+if(isset($_COOKIE["remember"]) && !isUnique(queryLs("acc.txt"),$_COOKIE["remember"])){
+	$_SESSION["jm"]=$_COOKIE["remember"];
+	if(queryLs("acc.txt")[$_COOKIE["remember"]]["ad"]==="yes") $_SESSION["ad"]=true;
+
+}
 if(isset($_SESSION["jm"])){
 	echo "<h1>hello ".$_SESSION["jm"]."</h1>";
 }
