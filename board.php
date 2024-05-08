@@ -36,6 +36,8 @@ echo $fo[0];
 if(isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	echo "\n</textarea><br />";
 	echo '<input type=submit value="Update" />';
+	echo '<style>.gimmick {height: 300px;} .bans .scroll {height:300px;}</style>';
+	echo '<style> @media screen and (max-width:780px){.gimmick {width:93%;}}</style>';
 }
 if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	$temp=$fo;
@@ -139,7 +141,45 @@ echo "catch";
 }
 writeOut($fo);
 footer();
+if(!$_SESSION["ad"]){
+	die();
+}
 ?>
+	<script type="text/javascript" src="./js/tinymce/tinymce.min.js"></script>
+
+	<script type="text/javascript">
+
+		tinymce.init(
+
+			{
+
+				language : 'cs',
+
+				selector: 'textarea[name=gUpdate]',
+
+				theme: 'modern',
+
+				plugins: [
+
+					'hr anchor pagebreak',
+
+					'searchreplace wordcount visualblocks visualchars code',
+
+					'insertdatetime nonbreaking save table directionality',
+
+					'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+
+				],
+
+				toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+
+				toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+
+				image_advtab: true,
+
+			});
+
+	</script>
 </main>
 </body>
 </html>
