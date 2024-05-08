@@ -30,6 +30,18 @@ table.layout1 {
 	width: 80%;
 	margin: 0 10px;
 }
+.post {
+	padding: 10px 10px;
+	margin: 10px 0;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+.man span,a {
+	color: red;
+}
+.man {
+	float: right;
+}
 @media screen and (max-width: 780px){
 	.split {
 		display:block;
@@ -44,5 +56,14 @@ table.layout1 {
 	}
 	.bans .scroll td {
 		width: 100%;
+	}
+	.man {
+		display: block;
+		float: none;
+		overflow:hidden;
+		padding-bottom: 0;
+	}
+	.post { 
+		width: 90%; 
 	}
 }

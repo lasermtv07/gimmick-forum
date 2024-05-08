@@ -92,20 +92,24 @@ function writeOut($fo){
 	$fo=array_reverse($fo);
 	foreach($fo as $i){
 		if($i!==""){
-			echo "<hr />";
+			echo "<div class=post >";
 			$t=explode("~",$i);
 			$tj=explode("|",base64_decode($t[0]));
-			echo "<b>".$tj[0]."</b> - <i>".$tj[1]."</i>";
+			$time=gmdate("d/m/Y H:i",$tj[1]);
+			echo "<b>".$tj[0]."</b> - <i>".$time."</i>";
 			if($_SESSION["ad"]){
+				echo "<span class=man>";
 				echo  "<a href=delete.php?r=".$t[0]."&o=".$_GET["f"].">";
-				echo "<span style=\"color:red; float:right\">[DELETE]</span>";
+				echo "<span>[DELETE]</span>";
 				echo "</a>";
 				echo "<a href=ban.php?j=".$tj[0]."&b=".$_GET["f"].">";
-				echo "<span style=color:red;float:right;padding-right:5px; >[BAN]</span>";
+				echo "<span>[BAN]</span>";
 				echo "</a>";
+				echo "</span>";
 			}
 			echo "<br>";
 			echo $t[1];
+			echo "</div>";
 		}
 
 }
@@ -146,39 +150,22 @@ if(!$_SESSION["ad"]){
 }
 ?>
 	<script type="text/javascript" src="./js/tinymce/tinymce.min.js"></script>
-
 	<script type="text/javascript">
-
 		tinymce.init(
-
 			{
-
 				language : 'cs',
-
 				selector: 'textarea[name=gUpdate]',
-
 				theme: 'modern',
-
 				plugins: [
-
 					'hr anchor pagebreak',
-
 					'searchreplace wordcount visualblocks visualchars code',
-
 					'insertdatetime nonbreaking save table directionality',
-
 					'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
-
 				],
-
 				toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-
 				toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-
 				image_advtab: true,
-
 			});
-
 	</script>
 </main>
 </body>
