@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>account</title>
+	<link rel=stylesheet href=css/style.css />
 </head>
 <body>
 <?php
@@ -15,19 +16,20 @@ else {
 	echo "<b>Error: No one is logged in</b>";
 	die();
 }
+menu();
 ?>
+<main>
 	<h2>user info</h1>
 	<form method=POST>
 	<b>Name: </b><input type=text name=jm value="<?php echo $jm ?>"/> <br>
 	<b>Email: </b><input type=text name=mail value="<?php echo $mail; ?>" /> <br>
-	<input type="submit" name="info" />
+	<input type="submit" name="info" value="Change"/>
 	</form>
 <?php
 //kod pro zmenu emailu/jmena uzivatele
-//TODO: vytahnou email z kontroly unikatnosti jmena
 if(isset($_POST["info"])){
 	//kontroluje unikatnost jmena
-	if(isUnique(queryLs("acc.txt"),$_POST["jm"])){
+	if(isUnique(queryLs("acc.txt"),$_POST["jm"] || $_POST["jm"]===$_SESSION["jm"])){
 		$f=file_get_contents("acc.txt");
 		$f=explode("\n",$f);
 		//prepisuje
@@ -45,6 +47,7 @@ if(isset($_POST["info"])){
 		$_SESSION["jm"]=$_POST["jm"];
 		file_put_contents("acc.txt",$f);
 		header("location: acc.php");
+	if(isset($_COOKIE["remember"])) setcookie("remember","",1,"/");
 	}
 	else {
 		echo "<b>Error: Name already taken</b>";
@@ -54,10 +57,12 @@ if(isset($_POST["info"])){
 ?>
 <h2>password change</h2>
 <form method=POST>
-	<b>Old Password: </b><input type=password name=ohe /><br />
-	<b>New Password: </b><input type=password name=he /><br />
-	<b>Verify Password:</b> <input type=password name=phe /><br />
-	<input type=submit name=hesla />
+<table>
+	<tr><td><b>Old Password: </b></td><td><input type=password name=ohe /></td></tr>
+	<tr><td><b>New Password: </b></td><td><input type=password name=he /></td></tr>
+	<tr><td><b>Verify Password:</b></td><td><input type=password name=phe /></td></tr>
+	<tr colspan=2><td><input type=submit name=hesla value="Change" /></td></tr>
+</table>
 </form>
 <?php
 //kod pro zmenu hesla uzivatele
@@ -105,5 +110,38 @@ if(isset($_POST["hesla"])){
 	echo "<b>Changed sucesfully</b>";
 }
 ?>
+<h1>delete account</h1>
+<p>Were sorry that you are leaving! However, before you go, please confirm your password so we know it's really you and not some impostor.</p>
+<form method=POST>
+<b>Password: </b> <input type=password name=dhe /><br />
+<input type=submit name=ds value=Delete />
+</form>
+<?php
+if(isset($_POST["ds"])){
+	$l=queryLs("acc.txt");
+if(isset($l[$_SESSION["jm"]])){
+		if(base64_decode($l[$_SESSION["jm"]]["he"])!==$_POST["dhe"]){
+			echo "<b>Error: The Password entered is not correct<b>";
+			die();
+		}
+	}
+	else {
+			echo "<b>Error: Unknown Error</b>";
+			die();
+	}
+	$f=explode("\n",file_get_contents("acc.txt"));
+	$o="";
+	foreach($f as $i){
+		if(explode(";",$i)[0]!==$_SESSION["jm"]) $o.="$i\n";
+	}
+	file_put_contents("acc.txt",$o);
+	if(isset($_COOKIE["remember"])) setcookie("remember","",1,"/");
+	unset($_SESSION["jm"]);
+	header("location: .");
+}
+?>
+footer();
+?>
+</main>
 </body>
 </html>

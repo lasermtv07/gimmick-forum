@@ -20,3 +20,36 @@ li {
 	list-style: "> ";
 	margin-left: 5px;
 }
+.counter {
+	color:white;
+	background-color: rgb(70,130,180);
+	border: 2px solid white;
+	margin: 15px;
+	display: inline-block;
+	border-collapse: collapse;
+}
+.counter td {
+	border: none !important;
+}
+.counter td {
+	width: 100px !important;
+}
+.counter .labels {
+	border-bottom: 2px solid white !important;
+}
+.counterc span {
+	position: relative;
+	top: -35px !important;
+}
+@media screen and (max-width: 780px) {
+	main {
+		width: 100%;
+		margin: 0 10px !important;
+	}
+.counter {
+	display: block;
+}
+.counterc span {
+	top: 0 !important;
+}
+}

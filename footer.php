@@ -15,8 +15,15 @@ function footer(){
 			setcookie("counter",1,time()+65536,"/");
 		}
 	}
-	echo "<b>Total visits:</b> ".file_get_contents("counter.txt")."<br />";
 	$c=(isset($_COOKIE["counter"])) ? $_COOKIE["counter"] : "0";
-	echo "<b>Your visits:</b>: $c</br />";
+	echo "<center>";
+	echo "<div class=counterc>";
+	echo "<table class=counter>\n";
+	echo "<tr class=labels><td>Visists Total</td><td>Your Visists</td></tr>";
+	echo "<tr class=numbers><td>".file_get_contents('counter.txt')."</td><td>$c</td></tr>";
+	echo "</table>";
+	echo "<span>(c) Michal Chmelar, 2024. Under the UNLICENSE.<br></span>";
+	echo "</div>";
+	echo "</center>";
 }
 ?>

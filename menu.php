@@ -8,7 +8,7 @@ function menu(){
 	echo "<span class=right >";
 	session_start();
 	if(isset($_SESSION["jm"])){
-		echo "<span class=frame>".$_SESSION["jm"]."</span> ";
+		echo "<span class=frame-link><a href=acc.php>".$_SESSION["jm"]."</a></span> ";
 		echo "<span class=frame-link><a href=logout.php>Logout</a></span>";
 	}
 	else echo "<span class=frame-link><a href=login.php >Login</a></span> <span class=frame-link><a href=register.php >Register</a></span>";
