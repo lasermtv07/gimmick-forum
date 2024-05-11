@@ -42,5 +42,12 @@ function isUnique($l,$s){
                 $a=implode("",$a);
                 return $a;
     }
-
+function extractName($j){
+	$j=explode("-",$j)[1];
+	$j=explode(".",$j)[0];
+	$j=str_split($j);
+	$j[0]=strtoupper($j[0]);
+	$j=implode("",$j);
+	return $j;
+}
 ?>

@@ -1,18 +1,20 @@
+<?php
+include 'com.php';
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>a test board</title>
+<title>gimmick forum :: <?php echo extractName($_GET["f"]); ?></title>
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/board.css" />
 </head>
 <body>
 <?php
-include 'com.php';
 menu();
 session_start();
 ?>
 <main>
-	<h1>Hello</h1>
+	<h1><?php echo extractName($_GET["f"]); ?></h1>
 <?php
 //zemre pokud soubor neexistuje
 $f=isset($_GET["f"]) ? $_GET["f"] : "";
@@ -63,10 +65,10 @@ if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 </div>
 
 <div class=bans >
-//vypisuje bany
 		<h3>Bans</h3>
 <div class=scroll >
 <?php
+//vypisuje bany
 $bl=explode("~",$fo[1]);
 echo "<table>\n";
 foreach($bl as $i){
@@ -96,7 +98,8 @@ array_shift($fo);
 function writeOut($fo){
 	$fo=array_reverse($fo);
 	foreach($fo as $i){
-		if($i!==""){
+		//ft. fix na to, ze vypisuje i post jen s koncem media (EM - 0x19)
+		if($i!=="" && strpos(explode("|",base64_decode(explode("~",$i)[0]))[0],chr(0x19))==false){
 			echo "<div class=post >";
 			$t=explode("~",$i);
 			$tj=explode("|",base64_decode($t[0]));

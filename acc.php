@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>account</title>
+	<title>gimmick-forum :: account</title>
 	<link rel=stylesheet href=css/style.css />
 </head>
 <body>
