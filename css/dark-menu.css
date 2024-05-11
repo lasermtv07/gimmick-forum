@@ -1,0 +1,6 @@
+* {
+--menu-bg: #36384A !important;
+}
+.menu .links a:hover {
+	background-color: #2B2C3B !important;
+}

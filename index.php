@@ -22,6 +22,9 @@ if(isset($_SESSION["jm"])){
 else {
 	echo "<h1>hello, anon</h1>";
 }
+echo "Dark mode:";
+echo ($_COOKIE["dark"])?"yes":"no";
+echo "<br />";
 footer();
 ?>
 </main>

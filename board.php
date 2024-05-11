@@ -14,6 +14,7 @@ session_start();
 <main>
 	<h1>Hello</h1>
 <?php
+//zemre pokud soubor neexistuje
 $f=isset($_GET["f"]) ? $_GET["f"] : "";
 if(!file_exists($f)){
 	echo "<b>File doesnt exist!</b>";
@@ -31,6 +32,8 @@ $fo=explode("\n",$f);
 <div class=gimmick >
 		<h3>Gimmick</h3>
 <?php
+//dava adminovi moznost zmenit gimmick
+//vypise pro admina formular
 if(isset($_SESSION["ad"]) && $_SESSION["ad"]) echo "<form method=POST>\n<textarea name=gUpdate>";
 echo $fo[0];
 if(isset($_SESSION["ad"]) && $_SESSION["ad"]){
@@ -39,6 +42,7 @@ if(isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	echo '<style>.gimmick {height: 300px;} .bans .scroll {height:300px;}</style>';
 	echo '<style> @media screen and (max-width:780px){.gimmick {width:93%;}}</style>';
 }
+//prepise v souboru
 if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	$temp=$fo;
 	$temp[0]=$_POST["gUpdate"];
@@ -59,6 +63,7 @@ if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 </div>
 
 <div class=bans >
+//vypisuje bany
 		<h3>Bans</h3>
 <div class=scroll >
 <?php
@@ -114,9 +119,9 @@ function writeOut($fo){
 
 }
 }
+//odeslani zpravy
 if(isset($_POST["s"])){
-
-echo "catch";
+	//validace
 	if(!isset($_SESSION["jm"])){
 		echo "<b>Must be logged in to post!</b>";
 		writeOut($fo);
@@ -137,6 +142,7 @@ echo "catch";
 		writeOut($fo);
 		die();
 	}
+	//zapis do souboru
 	$h=base64_encode($_SESSION["jm"]."|".((string) time()));
 	$z=nl2br(htmlspecialchars(trim($_POST["po"])));
 	$z=preg_replace("/[\n\r]/","",$z); 

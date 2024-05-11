@@ -67,3 +67,6 @@ table.layout1 {
 		width: 90%; 
 	}
 }
+textarea {
+	width: 99%;
+}

@@ -1,0 +1,25 @@
+/*barevne schema prevzato z catpuccin: https://github.com/catppuccin/catppuccin*/
+body {
+	background-color: #5c5f77 !important;
+}
+main {
+	background-color: #4c4f69 !important;
+	color: #eff1f5 !important;
+}
+textarea, input[type=text], input[type=password] {
+	background-color: #6c6f85 !important;
+	border: 2px solid #eff1f5 !important;
+	color: #eff1f5 !important;
+}
+.counter {
+	background-color: #36384A !important;
+}
+.scroll td {
+	border:1px solid  #eff1f5 !important;
+}
+.post {
+	border: 2px solid #eff1f5 !important;
+}
+a {
+	color: #eff1f5;
+}
