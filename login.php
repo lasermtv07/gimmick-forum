@@ -22,12 +22,13 @@ session_start();
 	</table>
 	</form>
 <?php
+//zkontroluje jestli uz uzivatel neni prihlaseny
 if(isset($_SESSION["jm"])){
 	echo "<b>Error: User already logged in</b>";
 	footer();
 	die();
 }
-
+//kontrola udaju
 if(isset($_POST["s"])){
 	$jm=(isset($_POST["jm"])) ? trim($_POST["jm"]) : "";
 	$he=(isset($_POST["he"])) ? trim($_POST["he"]) : "";

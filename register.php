@@ -32,6 +32,7 @@ menu();
 				</table>
     </form>
 <?php
+//validace
         if(isset($_POST["s"])){
             $jm=(isset($_POST["jm"])) ? htmlspecialchars(trim($_POST["jm"])) : "";
             $em=(isset($_POST["em"])) ? $_POST["em"] : "";
@@ -63,6 +64,7 @@ menu();
 							footer();
 							die();
 						}
+						//zapis
 						$he=base64_encode($he);
 						file_put_contents("acc.txt","$jm;$em;$he;no;no\n",FILE_APPEND);
 				}

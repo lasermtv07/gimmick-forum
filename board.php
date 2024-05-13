@@ -92,9 +92,9 @@ array_shift($fo);
 <form method=POST>
 <b>Write your post:</b><br />
 <textarea name=po rows=5 cols=50></textarea>
-<br /><input type="submit" name="s"/>
+<br /><input type="submit" name="s" value=Post />
 <?php
-
+//vypis posty
 function writeOut($fo){
 	$fo=array_reverse($fo);
 	foreach($fo as $i){

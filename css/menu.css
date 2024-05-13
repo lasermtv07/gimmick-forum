@@ -9,10 +9,11 @@ body {
 	background-color: var(--menu-bg);
 	position: sticky;
 	top: 0px;
+	padding-bottom: 5px;
 }
-.menu h1 {
-	display:inline;
-
+a img {
+	position: relative;
+	top: 5px;
 }
 .menu h1 a {
 	color: white !important;
@@ -23,6 +24,7 @@ body {
 }
 .menu .links {
 	padding: 25px;
+	padding-right: 0;
 	position: relative;
 	top: -5px;
 	color: white !important;
@@ -63,10 +65,11 @@ body {
 	.menu {
 		height: 8rem;
 	}
-	.menu h1 {
+	.menu img {
 		display:block;
 		margin: 0 auto;
-		width: 75%;
+		width: 150px;
+		padding-bottom: 10px;
 		text-align: center;
 	}
 	.menu .links {
@@ -85,3 +88,4 @@ body {
 		display: block;
 	}
 }
+

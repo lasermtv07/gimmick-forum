@@ -29,9 +29,10 @@ menu();
 //kod pro zmenu emailu/jmena uzivatele
 if(isset($_POST["info"])){
 	//kontroluje unikatnost jmena
-	if(isUnique(queryLs("acc.txt"),$_POST["jm"] || $_POST["jm"]===$_SESSION["jm"])){
+	if((isUnique(queryLs("acc.txt"),$_POST["jm"]) || $_POST["jm"]===$_SESSION["jm"]) && !($_POST["jm"]==="" || !preg_match("/^[A-Za-z0-9ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽáčďéěíňóřšťúůýž ]+$/",$_POST["jm"]) || mb_strlen($_POST["jm"])<3)){	
 		$f=file_get_contents("acc.txt");
 		$f=explode("\n",$f);
+
 		//prepisuje
 		foreach($f as $k=>$i){
 			$t=explode(";",$i);
@@ -44,13 +45,13 @@ if(isset($_POST["info"])){
 		}
 		$f=implode("\n",$f);
 		//zmeni session, zapise do souboru
-		$_SESSION["jm"]=$_POST["jm"];
+		$_SESSION["jm"]=htmlspecialchars($_POST["jm"]);
 		file_put_contents("acc.txt",$f);
 		header("location: acc.php");
 	if(isset($_COOKIE["remember"])) setcookie("remember","",1,"/");
 	}
 	else {
-		echo "<b>Error: Name already taken</b>";
+		echo "<b>Error: Invalid credentials</b>";
 	}
 
 }
@@ -74,6 +75,7 @@ if(isset($_POST["hesla"])){
 	//validuje zadane udaje
 	if($ohe===""){
 		echo "<b>Error: You must enter your old password</b>";
+		footer();
 		die();
 	}
  if($he==="" || !preg_match("/^[A-Za-z0-9ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽáčďéěíňóřšťúůýž.!]+$/",$he) || mb_strlen($he)<5) {
@@ -82,6 +84,7 @@ if(isset($_POST["hesla"])){
 	}
 	if($he!==$phe){
 		echo "<b>Error: Passwords do not match!";
+		footer();
 		die();
 	}
 	//zkontroluje, zda bylo spravne zadane stare heslo
@@ -89,11 +92,13 @@ if(isset($_POST["hesla"])){
 	if(isset($l[$_SESSION["jm"]])){
 		if(base64_decode($l[$_SESSION["jm"]]["he"])!==$ohe){
 			echo "<b>Error: THe Old Password entered is not correct<b>";
+			footer();
 			die();
 		}
 	}
 	else {
-			echo "<b>Error: Unknown Error</b>";
+		echo "<b>Error: Unknown Error</b>";
+		footer();
 			die();
 	}
 	//zapise nove heslo
@@ -139,7 +144,7 @@ if(isset($l[$_SESSION["jm"]])){
 	unset($_SESSION["jm"]);
 	header("location: .");
 }
-?>
+
 footer();
 ?>
 </main>

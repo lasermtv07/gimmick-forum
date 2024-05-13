@@ -1,8 +1,4 @@
 aaa;bb@a.a;YWFhYWE=;yes;yes
 misa;misa@aa.a;YWFhYWE=;no;no
 asdasd;asd@asd.asd;YmJiYmI=;no;no
-qqq;qqq@qqq.qq;cXFxcXE=;no;no
-
-ggg;ggg@gg.gg;Z2dnZ2c=;no;no
-
-eee;eee@ee.e;ZWVlZWU=;no;no
+ggg;www@ww.w;d3d3d3c=;no;no

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="29mm"
+   height="9mm"
+   viewBox="0 0 29 9"
+   version="1.1"
+   id="svg1070"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1072"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="6.2145903"
+     inkscape:cx="71.686141"
+     inkscape:cy="37.653327"
+     inkscape:window-width="1920"
+     inkscape:window-height="1059"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1067" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#ffffff;stroke-width:0.230352;stroke-dasharray:none"
+       id="rect1074"
+       width="28.03476"
+       height="7.428586"
+       x="0.64223725"
+       y="0.81929004" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:0.317768;stroke-dasharray:none"
+       d="M 0.75548838,2.8505232 C 28.891833,2.8605792 28.824524,2.8605792 28.824524,2.8605792"
+       id="path1610" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:0.317768;stroke-dasharray:none"
+       d="m 26.60856,0.8704327 c 0.0035,1.8291759 0.0035,1.8291759 0.0035,1.8291759 L 26.443877,2.5258444"
+       id="path1612"
+       inkscape:transform-center-x="10.487504"
+       inkscape:transform-center-y="-0.61732478" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.42362px;fill:none;stroke:#ffffff;stroke-width:0.313484;stroke-dasharray:none"
+       x="3.535459"
+       y="7.0791321"
+       id="text1668"
+       transform="scale(1.0455414,0.95644227)"><tspan
+         sodipodi:role="line"
+         id="tspan1666"
+         style="font-size:4.42362px;stroke-width:0.313484;stroke:#ffffff"
+         x="3.535459"
+         y="7.0791321">gimmick'd</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:1.34522px;fill:none;stroke:#ffffff;stroke-width:0.317768;stroke-dasharray:none"
+       x="27.312771"
+       y="2.1593509"
+       id="text1722"
+       transform="scale(1.0018,0.99820323)"><tspan
+         sodipodi:role="line"
+         id="tspan1720"
+         style="font-size:1.34522px;stroke-width:0.317768;stroke:#ffffff"
+         x="27.312771"
+         y="2.1593509">x</tspan></text>
+  </g>
+</svg>
