@@ -9,13 +9,12 @@ function queryLs($l){
         foreach(explode("\n",$f) as $i){
                 $t=explode(";",$i);
                 if(sizeof($t)>=5){
-                        $o[$t[0]]=["em"=>$t[1],"he"=>$t[2],"ad"=>$t[3],"th"=>$t[4]]; //E: ad tells abt admin privilegies C: ad rika esi ma uzivatel adminska prava
+                        $o[$t[0]]=["em"=>$t[1],"he"=>$t[2],"ad"=>$t[3],"th"=>$t[4]]; //C: ad rika esi ma uzivatel adminska prava
                 }
         }
         return $o;
 }
-//E:using $l since its more like a list than database
-//C:pouzivam $l protoze je to spise jako seznam nez databaze
+//pouzivam $l protoze je to spise jako seznam nez databaze
 function isUnique($l,$s){
         return !array_key_exists($s,$l);
 }
