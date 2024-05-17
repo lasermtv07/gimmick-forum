@@ -52,7 +52,7 @@ a img {
 }
 .menu .right {
 	float: right;
-	padding-top: 11px;
+	padding-top: 20px;
 	padding-right: 10px;
 }
 .frame,.frame-link {
@@ -61,6 +61,12 @@ a img {
 	padding: 2px 4px;
 }
 
+/*aplikuje se jen na Firefoxu - vycentruje .right (na Blinku a Gecu se z nejakeho duvodu padding chova jinak)*/
+@-moz-document url-prefix() {
+	.menu .right {
+		padding-top: 10px;
+	}
+}
 @media screen and (max-width:780px) {
 	.menu {
 		height: 8rem;

@@ -13,6 +13,7 @@ if($_SESSION["ad"]){
 		}
 		$bans=implode("~", $bans);
 		$f[1]=$bans;
+		var_dump($f);
 		$f=implode("\n",$f);
 		echo $f;
 		file_put_contents($b,$f);

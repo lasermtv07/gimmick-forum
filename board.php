@@ -51,12 +51,7 @@ if(isset($_POST["gUpdate"]) && isset($_SESSION["ad"]) && $_SESSION["ad"]){
 	$t2="";
 	//tady jsem eml problemy s kodovanim newlinu a nl2br je neopravilo,
 	//tak jsem newliny a carriage return smazal rucne
-	foreach(mb_str_split($temp[0]) as $i){
-		if($i!=="\n" && $i!=="\r"){
-			$t2.=$i;
-		}
-	}
-	$temp[0]=$t2;
+	$temp[0]=sanitizeCRLF($temp[0]);
 	$temp=implode("\n",$temp);
 	file_put_contents($_GET["f"],$temp);
 	header("location: board.php?f=".$_GET["f"]);
@@ -103,7 +98,8 @@ function writeOut($fo){
 			echo "<div class=post >";
 			$t=explode("~",$i);
 			$tj=explode("|",base64_decode($t[0]));
-			$time=gmdate("d/m/Y H:i",$tj[1]);
+			//pricitam 3600 protoze cas se normalne zobrazuje v UTD
+			$time=gmdate("d/m/Y H:i",$tj[1]+2*3600);
 			echo "<b>".$tj[0]."</b> - <i>".$time."</i>";
 			if($_SESSION["ad"]){
 				echo "<span class=man>";

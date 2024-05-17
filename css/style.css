@@ -48,8 +48,12 @@ li {
 	}
 .counter {
 	display: block;
+	width: 95%;
 }
 .counterc span {
 	top: 0 !important;
+}
+.counter td {
+	width: 8% !important;
 }
 }

@@ -1,6 +1,7 @@
 <?php
 include 'menu.php';
 include 'footer.php';
+error_reporting(E_ALL && ~E_NOTICE && ~E_WARNING);
 //PHP soubor pro funkce ktere planuju pouzivat ve vice souborech
 function queryLs($l){
         $f=file_get_contents($l);
@@ -26,4 +27,14 @@ function extractName($j){
 	$j=implode("",$j);
 	return $j;
 }
+function sanitizeCRLF($s){
+	$o="";
+	foreach(mb_str_split($s) as $i){
+		if($s!=="\n" && $s!=="\r"){
+			$o.=$i;
+		}
+	}
+	return $o;
+}
+
 ?>

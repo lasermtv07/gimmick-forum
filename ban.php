@@ -17,7 +17,12 @@ if($_SESSION["ad"]){
 			die();
 		}
 		if(!preg_match("/$j~/",$f[1]))$f[1].="$j~";
+		$f[1]=sanitizeCRLF($f[1]);
+		var_dump($f);
 		$f=implode("\n",$f);
+		echo "<pre>";
+		var_dump($f);
+		echo "</pre>";
 		file_put_contents($b,$f);
 	}
 }
