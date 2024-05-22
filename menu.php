@@ -1,7 +1,10 @@
 <?php
 function menu(){
 		if(!isset($_COOKIE["dark"])) setcookie("dark","0",time()+3600*24*30,"/");
-	echo file_get_contents("menu.html");
+		echo '<link rel=stylesheet href="css/menu.css" /> <div class="menu" >         <a href=index.php /><img src=img/logo.svg /></a>                 <span class="links">';
+		foreach(scandir(__DIR__."/boards") as $i){
+			if($i!=="." && $i!=="..") echo "<a href=board.php?f=boards/$i />".extractName($i)."</a>";
+		}
 	if($_COOKIE["dark"]=="1") echo "<link rel=stylesheet href=css/dark-menu.css />";
 	echo "<span class=right >";
 	session_start();

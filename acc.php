@@ -26,6 +26,26 @@ menu();
 	<input type="submit" name="info" value="Change"/>
 	</form>
 <?php
+function replaceBans($old,$new){
+	//nahradi bany; v dedicated funkci protoze kdyby to tak nebylo tak by to bylo matouci
+	foreach(scandir(__DIR__."/boards") as $i){
+		if($i=="." || $i=="..") continue;
+		$ft=file_get_contents("boards/$i");
+		$ft=explode("\n",$ft);
+		$tt="";
+		foreach(explode("~",$ft[1]) as $j){
+			$ttt=trim($j); //wtf
+			if($ttt===$old) $tt.=$new;
+			else $tt.=$ttt;
+			$tt.="~";
+		}
+		//wait.. neslo takhle delat vsechno?
+		$tt=str_replace("~~","~",$tt);
+		$ft[1]=$tt;
+		$ft=implode("\n",$ft);
+		file_put_contents("boards/$i",$ft);
+	}
+}
 //kod pro zmenu emailu/jmena uzivatele
 if(isset($_POST["info"])){
 	//kontroluje unikatnost jmena
@@ -44,9 +64,13 @@ if(isset($_POST["info"])){
 			$f[$k]=$t;
 		}
 		$f=implode("\n",$f);
+		echo "test";
+		//prepise bany
+		replaceBans($_SESSION["jm"],$_POST["jm"]);
 		//zmeni session, zapise do souboru
 		$_SESSION["jm"]=htmlspecialchars($_POST["jm"]);
 		file_put_contents("acc.txt",$f);
+
 		header("location: acc.php");
 	if(isset($_COOKIE["remember"])) setcookie("remember","",1,"/");
 	}

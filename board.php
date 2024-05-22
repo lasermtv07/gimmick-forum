@@ -23,7 +23,7 @@ if(!file_exists($f)){
 	die();
 }
 //tohle zapomenou by byla VELKA CHYBA!
-if(explode("-",$f)[0]!=="bo"){
+if(explode("-",explode("/",$f)[1])[0]!=="bo"){
 	echo "<b>Dont</b>";
 	die();
 }
