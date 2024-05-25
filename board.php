@@ -113,6 +113,11 @@ function writeOut($fo){
 			}
 			echo "<br>";
 			echo $t[1];
+			echo "<br>";
+			$up=explode(";",base64_decode($t[2]));
+			echo sizeof($up)."x ";
+			if(in_array($_SESSION["jm"],$up) && isset($_SESSION["jm"])) echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]." >-</a>]";
+			else echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]." >↑</a>]";
 			echo "</div>";
 		}
 
