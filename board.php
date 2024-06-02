@@ -115,9 +115,13 @@ function writeOut($fo){
 			echo $t[1];
 			echo "<br>";
 			$up=explode(";",base64_decode($t[2]));
+			$down=explode(";",base64_decode($t[3]));
 			echo sizeof($up)."x ";
 			if(in_array($_SESSION["jm"],$up) && isset($_SESSION["jm"])) echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]." >-</a>]";
 			else echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]." >↑</a>]";
+				echo sizeof($down)."x ";	
+if(in_array($_SESSION["jm"],$down) && isset($_SESSION["jm"])) echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]."&d=1 >-</a>]";
+			else echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]."&d=1 >↓</a>]";
 			echo "</div>";
 		}
 
