@@ -5,4 +5,9 @@ Also, sorry for the weird mix of english and czech naming conventions <3
 
 ---
 
-***TODO***: Fix bug with deleting posts
+***TODO***:<br>
+~~Fix bug with deleting posts~~
+<br>
+Fix bug with downvotes
+<br>
+Make statistics table change color in dark mode

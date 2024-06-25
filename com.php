@@ -36,4 +36,21 @@ function sanitizeCRLF($s){
 	return $o;
 }
 
+function queryMessagesByName($n){
+	$o=[];
+	foreach(scandir("boards") as $i){
+		if(is_readable("boards/$i") and !preg_match("/^[\.]+$/",$i)){
+			$t=explode("\n",file_get_contents("boards/$i"));
+			array_shift($t);
+			array_shift($t);
+			foreach($t as $j){
+				$tn=explode("~",$j)[0];
+				$tn=base64_decode($tn);
+				$tn=explode("|",$tn)[0];
+				if($tn==$n) array_push($o,[$i,$j]);
+			}
+		}
+	}
+	return $o;
+}
 ?>

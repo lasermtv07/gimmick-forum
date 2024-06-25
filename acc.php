@@ -3,6 +3,14 @@
 <head>
 	<title>gimmick-forum :: account</title>
 	<link rel=stylesheet href=css/style.css />
+	<style>
+		.stat, .stat td {
+			border: 1px solid black;
+		}
+		.stat {
+			border-collapse:collapse;
+		}
+	</style>
 </head>
 <body>
 <?php
@@ -17,6 +25,63 @@ else {
 	die();
 }
 menu();
+?>
+<?php
+function statistics(){
+	echo "<h2>statistics</h2>";
+	$p=queryMessagesByName($_SESSION["jm"]);
+	//var_dump($p);
+	//najde nejvyse hodnocenej post
+	$top=[0,$p[0]];
+	foreach($p as $i){
+		$t=explode("~",$i[1]);
+		if(sizeof($t)==3 || (sizeof($t)==4 && $t[2]!="")) $t=$t[2];
+		else if(sizeof($t)==4) $t=$t[3];
+		else $t="";
+		if($t!=""){
+			$t=base64_decode($t);
+			$t=explode(";",$t);
+			$t=sizeof($t)-1;
+		}
+		else $t=0;
+		if($t>$top[0]){
+			$top[0]=$t;
+			$top[1]=$i;
+		}
+	}
+	//nejvice pouzivana tabule
+	$most=[0,"bo-lolcat.txt"];
+	$c=[];
+	foreach($p as $i){
+		$c[$i[0]]++;
+	}
+	foreach($c as $k=>$i){
+		if($most[0]<$i) $most=[$i,$k];
+	}
+	//nejnovejsi a nejstarsi post
+	$old=[999999999999999999999999999999999,"",""];
+	$new=[0,"",""];
+	foreach($p as $i){
+		$t=explode("~",$i[1])[0];
+		$tt=base64_decode($t);
+		$tt=explode("|",$tt)[1];
+		if((int) $tt>$new[0]) $new=[(int) $tt,$t,$i[0]];
+		if((int) $tt<$old[0]) $old=[(int) $tt,$t,$i[0]];
+
+	}
+	echo "<br>";
+	echo "<table class=stat>";
+	echo "<tr><td>top post</td>";
+	echo "<td>".$top[0]." upvotes - ";
+	echo "<a href=board.php?f=boards/".$top[1][0]."#".explode("~",$top[1][1])[0]. " >goto &gt;&gt;</a></td></tr>";
+	echo "<tr><td>most used board</td><td>".$most[0]." visits - ";
+	echo "<a href=board.php?f=boards/".$most[1]." >".extractName($most[1])."</a></tr>";
+	echo "<tr><td>oldest post</td><td>".gmdate("d/m/Y H:i",$old[0]+7200)." - ";
+	echo "<a href=board.php?f=boards/".$old[2]."#".$old[1]." >goto &gt;&gt;</a></td></tr>";
+	echo "<tr><td>newest post</td><td>".gmdate("d/m/Y H:i",$new[0]+7200)." - ";
+	echo "<a href=board.php?f=boards/".$new[2]."#".$new[1]." >goto &gt;&gt;</a></td></tr>";
+	echo "</table>";
+}
 ?>
 <main>
 	<h2>user info</h1>
@@ -99,15 +164,19 @@ if(isset($_POST["hesla"])){
 	//validuje zadane udaje
 	if($ohe===""){
 		echo "<b>Error: You must enter your old password</b>";
+		statistics();
 		footer();
 		die();
 	}
  if($he==="" || !preg_match("/^[A-Za-z0-9ÁČĎÉĚÍŇÓŘŠŤÚŮÝŽáčďéěíňóřšťúůýž.!]+$/",$he) || mb_strlen($he)<5) {
 		echo "<b>Error: The password can only contain lowercase and uppercase letters, numbers, dot and ! and must be over 5 letters long! </b>";
+		statistics();
+		footer();
 		die();
 	}
 	if($he!==$phe){
 		echo "<b>Error: Passwords do not match!";
+		statistics();
 		footer();
 		die();
 	}
@@ -116,12 +185,14 @@ if(isset($_POST["hesla"])){
 	if(isset($l[$_SESSION["jm"]])){
 		if(base64_decode($l[$_SESSION["jm"]]["he"])!==$ohe){
 			echo "<b>Error: THe Old Password entered is not correct<b>";
+			statistics();
 			footer();
 			die();
 		}
 	}
 	else {
 		echo "<b>Error: Unknown Error</b>";
+		statistics();
 		footer();
 			die();
 	}
@@ -139,7 +210,7 @@ if(isset($_POST["hesla"])){
 	echo "<b>Changed sucesfully</b>";
 }
 ?>
-<h1>delete account</h1>
+<h2>delete account</h2>
 <p>Were sorry that you are leaving! However, before you go, please confirm your password so we know it's really you and not some impostor.</p>
 <form method=POST>
 <b>Password: </b> <input type=password name=dhe /><br />
@@ -151,11 +222,15 @@ if(isset($_POST["ds"])){
 if(isset($l[$_SESSION["jm"]])){
 		if(base64_decode($l[$_SESSION["jm"]]["he"])!==$_POST["dhe"]){
 			echo "<b>Error: The Password entered is not correct<b>";
+			statistics();
+			footer();
 			die();
 		}
 	}
 	else {
 			echo "<b>Error: Unknown Error</b>";
+			statistics();
+			footer();
 			die();
 	}
 	$f=explode("\n",file_get_contents("acc.txt"));
@@ -168,7 +243,7 @@ if(isset($l[$_SESSION["jm"]])){
 	unset($_SESSION["jm"]);
 	header("location: .");
 }
-
+statistics();
 footer();
 ?>
 </main>

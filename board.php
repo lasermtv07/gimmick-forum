@@ -95,9 +95,9 @@ function writeOut($fo){
 	foreach($fo as $i){
 		//ft. fix na to, ze vypisuje i post jen s koncem media (EM - 0x19)
 		if($i!=="" && strpos(explode("|",base64_decode(explode("~",$i)[0]))[0],chr(0x19))==false){
-			echo "<div class=post >";
 			$t=explode("~",$i);
 			$tj=explode("|",base64_decode($t[0]));
+			echo "<div class=post id=".$t[0].">";
 			//pricitam 3600 protoze cas se normalne zobrazuje v UTD
 			$time=gmdate("d/m/Y H:i",$tj[1]+2*3600);
 			echo "<b>".$tj[0]."</b> - <i>".$time."</i>";
