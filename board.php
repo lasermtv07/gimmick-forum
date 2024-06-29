@@ -16,6 +16,41 @@ session_start();
 <main>
 	<h1><?php echo extractName($_GET["f"]); ?></h1>
 <?php
+$f=$_GET["f"];
+if(!$_SESSION[$f]){
+$_SESSION[$f]=true;
+$v=file_get_contents("visitcount.txt");
+$l=explode(";",$v);
+//detekovano
+$d=false;
+$r=0;
+$h=0;
+foreach($l as $k=>$i){
+	$t=explode(":",$i);
+	if($t[0]==$f){
+		$d=true;
+		$r=$k; //proc..?
+		$h=$t[1]+1;
+	}
+}
+$l[$r]="$f:$h";
+if(!$d) $v.="$f:0;";
+if($d) {
+	$v=implode(";",$l);
+}
+file_put_contents("visitcount.txt",$v);
+
+}
+
+//ne velmi dobre udelane, ale basically vzpisuje pocet navstev
+echo "<b>Total board visits: ";
+foreach(explode(";",file_get_contents("visitcount.txt")) as $i){
+	$t=explode(":",$i);
+	if($t[0]==$f) echo $t[1];
+}
+echo "</b>";
+?>
+<?php
 //zemre pokud soubor neexistuje
 $f=isset($_GET["f"]) ? $_GET["f"] : "";
 if(!file_exists($f)){
