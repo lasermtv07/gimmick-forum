@@ -13,6 +13,7 @@ session_start();
 <main>
 	<h1>Login</h1>
 	<p>Note: If you havent registered yet, please register on the <a href="register.php"> Registration</a> page.
+<br>If you forgot you password, you can ask for it to be mailed on the <a href=forgot.php >Forgot password page</a>.</p>
 	<form method=POST>
 	<table>
 		<tr><td><b>Name:</b> </td><td><input type=text name=jm /> </td> </tr>
