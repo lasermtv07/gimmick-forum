@@ -3,14 +3,6 @@
 <head>
 	<title>gimmick-forum :: account</title>
 	<link rel=stylesheet href=css/style.css />
-	<style>
-		.stat, .stat td {
-			border: 1px solid black;
-		}
-		.stat {
-			border-collapse:collapse;
-		}
-	</style>
 </head>
 <body>
 <?php

@@ -1,1 +1,1 @@
-boards/bo-alien.txt:24;boards/bo-example.txt:18;boards/bo-hacker.txt:10;boards/bo-rhyme.txt:6;boards/bo-uwu.txt:9;boards/bo-lolcat.txt:1;boards/bo-tst.txt:1;boards/bo-fef.txt:0;
+boards/bo-alien.txt:25;boards/bo-example.txt:19;boards/bo-hacker.txt:10;boards/bo-rhyme.txt:7;boards/bo-uwu.txt:10;boards/bo-lolcat.txt:1;boards/bo-tst.txt:1;boards/bo-fef.txt:1;

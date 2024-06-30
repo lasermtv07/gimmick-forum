@@ -23,3 +23,6 @@ textarea, input[type=text], input[type=password] {
 a {
 	color: #eff1f5;
 }
+.stat, .stat td {
+	border-color: white !important;
+}

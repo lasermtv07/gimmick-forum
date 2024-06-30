@@ -129,7 +129,8 @@ function writeOut($fo){
 	$fo=array_reverse($fo);
 	foreach($fo as $i){
 		//ft. fix na to, ze vypisuje i post jen s koncem media (EM - 0x19)
-		if($i!=="" && strpos(explode("|",base64_decode(explode("~",$i)[0]))[0],chr(0x19))==false){
+		//ft. fix na random newliny co by se nemely dit
+		if($i!=="" && strpos(explode("|",base64_decode(explode("~",$i)[0]))[0],chr(0x19))==false && explode("~",$i)[0]!==""){
 			$t=explode("~",$i);
 			$tj=explode("|",base64_decode($t[0]));
 			echo "<div class=post id=".$t[0].">";

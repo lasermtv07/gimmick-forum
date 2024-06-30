@@ -41,19 +41,25 @@ li {
 	position: relative;
 	top: -35px !important;
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1200px) {
 	main {
-		width: 100%;
-		margin: 0 10px !important;
+			width: 100%;
+			margin: 0 10px !important;
+		}
+	.counter {
+		display: block;
+		width: 95%;
 	}
-.counter {
-	display: block;
-	width: 95%;
+	.counterc span {
+		top: 0 !important;
+	}
+	.counter td {
+		width: 8% !important;
+	}
 }
-.counterc span {
-	top: 0 !important;
+.stat, .stat td {
+	border: 1px solid black;
 }
-.counter td {
-	width: 8% !important;
-}
+.stat {
+	border-collapse:collapse;
 }
