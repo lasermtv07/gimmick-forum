@@ -11,12 +11,18 @@ function menu(){
 	if($_SESSION["ad"]){
 		echo "&nbsp;";
 		echo "<span class=frame-link>";
-		echo "<a href=boardmng.php />Manage boards</a>";
+		echo "<a href=boardmng.php />Manage&nbsp;boards</a>";
 		echo "</span>";
 	}
 	if($_COOKIE["dark"]=="1") echo "<link rel=stylesheet href=css/dark-menu.css />";
 	echo "<span class=right >";
 	if(isset($_SESSION["jm"])){
+		if($_SESSION["ad"]){
+			echo "&nbsp;";
+			echo "<span class=frame-link>";
+			echo "<a href=reportmng.php />Manage&nbsp;reports</a>";
+			echo "</span> ";
+		}
 		echo "<span class=frame-link><a href=acc.php>".$_SESSION["jm"]."</a></span> ";
 		echo "<span class=frame-link><a href=logout.php>Logout</a></span> ";
 	}

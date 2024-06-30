@@ -53,4 +53,39 @@ function queryMessagesByName($n){
 	}
 	return $o;
 }
+function isRealMessage($t){
+	$o=false;
+	foreach(scandir("boards") as $i){
+		if($i!=="." && $i!==".."){
+			$v=explode("\n",file_get_contents("boards/".$i));
+			array_shift($v);
+			array_shift($v);
+			foreach($v as $j){
+				$k=explode("~",$j);
+				if($k[0]!=""){
+					if($k[0]==$t) $o=true;
+				}
+			}
+		}
+	}
+	return $o;
+}
+function getMessageById($n){
+	$n=trim($n);
+	foreach(scandir("boards") as $i){
+		foreach(explode("\n",file_get_contents("boards/".$i)) as $j){
+			$t=explode("~",$j);
+			if($t[0]==$n) return[$i,$j];
+		}
+	}
+}
+function dismiss($i){
+	$k=[];
+	foreach(explode("~",file_get_contents("reports.txt")) as $j){
+		if($j!=$i) array_push($k,$j);
+	}
+	$o=implode("~",$k);
+	echo $o;
+	file_put_contents("reports.txt",$o);
+}
 ?>

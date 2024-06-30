@@ -158,6 +158,7 @@ function writeOut($fo){
 				echo sizeof($down)."x ";	
 if(in_array($_SESSION["jm"],$down) && isset($_SESSION["jm"])) echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]."&d=1 >-</a>]";
 			else echo "[<a href=upvote.php?b=".$_GET["f"]."&id=".$t[0]."&d=1 >↓</a>]";
+			echo " <i><a href=report.php?pre=".$t[0]." style=color:grey>[REPORT]</a></i>";
 			echo "</div>";
 		}
 
