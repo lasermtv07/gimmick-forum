@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once "com.php";
 function menu(){
 		session_start();
 		if(!isset($_COOKIE["dark"])) setcookie("dark","0",time()+3600*24*30,"/");
@@ -14,6 +16,7 @@ function menu(){
 		echo "<a href=boardmng.php />Manage&nbsp;boards</a>";
 		echo "</span>";
 	}
+
 	if($_COOKIE["dark"]=="1") echo "<link rel=stylesheet href=css/dark-menu.css />";
 	echo "<span class=right >";
 	if(isset($_SESSION["jm"])){

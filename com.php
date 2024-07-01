@@ -88,4 +88,17 @@ function dismiss($i){
 	echo $o;
 	file_put_contents("reports.txt",$o);
 }
+$colors=["orchid","red","orange","gold","yellow","green","var(--menu-bg)","blue"];
+function queryColors($a){
+	foreach(explode("~",file_get_contents("colors.txt")) as $i){
+		$t=explode(";",$i);
+		if($t[0]==$a) return $t[1];
+	}
+	return -1;
+}
+	if(isset($_SESSION["jm"]) && queryColors($_SESSION["jm"]!=-1 && $_COOKIE["dark"]!="1")){
+		echo "<style>";
+		echo ".menu {background-color:".$colors[queryColors($_SESSION["jm"])]." !important;";
+		echo "</style>";
+	}
 ?>

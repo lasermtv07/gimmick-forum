@@ -74,8 +74,32 @@ function statistics(){
 	echo "<a href=board.php?f=boards/".$new[2]."#".$new[1]." >goto &gt;&gt;</a></td></tr>";
 	echo "</table>";
 }
+if(queryColors($_SESSION["jm"])==-1) file_put_contents("colors.txt",$_SESSION["jm"].";6~",FILE_APPEND);
 ?>
 <main>
+	<h2>personalization</h2>
+	<form method=POST >
+	<b>Color:</b><br>
+	<i>Note: This color will be used as your menu bar color.</i><br>
+<?php
+//majestatni vecerni kodovani..heh
+foreach($colors as $k=>$i){
+	echo "<label><input type=radio name=c style=margin-top:7px; value=$k";
+	if(queryColors($_SESSION["jm"])==$k) echo " checked ";
+	echo "><span style=background-color:$i;color:$i; >aaaaa</label>";
+	if($k==floor(sizeof($colors)/2)-1) echo "<br>";
+}
+?>
+	<br><input type=submit name=scolors />
+	</form>
+<?php
+if(isset($_POST["scolors"]) && isset($_POST["c"])){
+	$fc=file_get_contents("colors.txt");
+	$fc=str_replace($_SESSION["jm"].";".queryColors($_SESSION["jm"])."~",$_SESSION["jm"].";".$_POST["c"]."~",$fc);
+	file_put_contents("colors.txt",$fc);
+	header("location:acc.php");
+}
+?>
 	<h2>user info</h1>
 	<form method=POST>
 	<b>Name: </b><input type=text name=jm value="<?php echo $jm ?>"/> <br>
