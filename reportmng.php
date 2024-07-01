@@ -12,7 +12,16 @@ include "com.php";
 	<main>
 	<h1>reports management</h1>
 <?php
+//smaze reporty of smazanych zprav
 $r=explode("~",file_get_contents("reports.txt"));
+$m=[];
+foreach($r as $i){
+	$t=explode(";",$i);
+	if(isRealMessage($t[0])) array_push($m,$i);
+}
+$r=$m;
+$m=implode("~",$m);
+file_put_contents("reports.txt",$m);
 //vytvori pole vsech reportu pro jednotlive zpravy
 $l=[];
 foreach($r as $i){

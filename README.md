@@ -11,3 +11,8 @@ Also, sorry for the weird mix of english and czech naming conventions <3
 ~~Fix bug with downvotes~~
 <br>
 ~~Make statistics table change color in dark mode~~
+<br>
+Downvotes broken again
+<br>
+Sendmail program needed for password mail
+<br>
